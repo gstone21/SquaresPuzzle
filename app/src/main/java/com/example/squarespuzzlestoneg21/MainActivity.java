@@ -4,6 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+/**
+ * --- MainActivity ---
+ * This class overrides onCreate and links UI controls to
+ * their respected listeners.
+ *
+ * @author Grant Stone
+ * November 10, 2019
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

@@ -1,7 +1,6 @@
 package com.example.squarespuzzlestoneg21;
 
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -9,6 +8,16 @@ import android.util.AttributeSet;
 import android.view.SurfaceView;
 
 import java.util.Random;
+
+/**
+ * --- PuzzleView Class ---
+ * This class contains the set of squares that are
+ * represented on the puzzle it draws.
+ *
+ * @author Grant Stone
+ * November 10, 2019
+ */
+
 
 public class PuzzleView extends SurfaceView {
 
@@ -25,7 +34,6 @@ public class PuzzleView extends SurfaceView {
     public PuzzleView(Context context, AttributeSet attrs){
         super(context, attrs);
         setWillNotDraw(false);
-        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setBackgroundColor(Color.BLACK);
 
         blackPaint.setColor(Color.BLACK);
@@ -38,10 +46,6 @@ public class PuzzleView extends SurfaceView {
         }
 
         getRandomPuzzle(squares);
-        //getWinPuzzle(squares);
-
-
-
     }
 
 
@@ -49,7 +53,6 @@ public class PuzzleView extends SurfaceView {
         canvas.drawRect(square.getLeft(), square.getTop(), square.getRight(), square.getBottom(), paint);
         whitePaint.setTextSize(150);
         canvas.drawText(square.getNum(), square.getLeft()+5f, square.getTop()+146.875f, whitePaint);
-
     }
 
     public void getRandomPuzzle(Square[] squares) {  //no more canvas
@@ -58,13 +61,12 @@ public class PuzzleView extends SurfaceView {
 
                 while(true) {
                      int rand = new Random().nextInt(16);
+
                      if(squares[rand].hasNoCord()) {
                          squares[rand].setCord(x, y);
                          break;
                      }
                      // loop until random square needs coord.
-
-
                 }
 
 
@@ -102,7 +104,6 @@ public class PuzzleView extends SurfaceView {
                     drawSquare(canvas, squares[i], somePaint);
                 }
                 i++;
-
             }
         }
 
@@ -113,18 +114,8 @@ public class PuzzleView extends SurfaceView {
     @Override
     public void onDraw(Canvas canvas)
     {
-
-
-
         canvas.drawRect(200f, 200f, 1000f, 1000f, whitePaint);
-        //squares[0].setCord(205, 205);
-       // if(squares[0].hasNoCord()) drawSquare(canvas, squares[0]);
-
-
         drawPuzzle(canvas, squares);
-        //drawWinPuzzle(canvas, squares);
-
-
     }
 
 

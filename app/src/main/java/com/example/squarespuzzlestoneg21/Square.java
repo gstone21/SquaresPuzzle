@@ -2,12 +2,20 @@ package com.example.squarespuzzlestoneg21;
 
 import static java.sql.Types.NULL;
 
+/**
+ * --- Square Class ---
+ * This class represents a square.
+ *
+ * @author Grant Stone
+ * November 10, 2019
+ */
+
 public class Square {
-    private int num;
-    private float left;
-    private float top;
-    private float right;
-    private float bottom;
+    private int num;      // the number on this square
+    private float left;   // left cord. of square, also the referred to x coordinate
+    private float top;    // top cord. of square, also the referred to y coordinate
+    private float right;  // named after param for drawRect like other vars., right cord. of square
+    private float bottom; // bottom cord. of square
 
 
             // constructors
@@ -17,13 +25,10 @@ public class Square {
              }
 
 
-
-
              //  getters
 
              public String getNum(){
                  return ""+num;
-
              }
 
              public int getIntNum(){
@@ -46,6 +51,7 @@ public class Square {
                  return bottom;
              }
 
+
              // booleans
 
              public boolean hasNoCord() {
@@ -60,8 +66,8 @@ public class Square {
                  }else {
                      return false;
                  }
-
              }
+
 
              //  setters
 

@@ -3,12 +3,20 @@ package com.example.squarespuzzlestoneg21;
 import android.view.MotionEvent;
 import android.view.View;
 
+/**
+ * --- PuzzleController Class ---
+ * This is the controller class for making game
+ * moves based on touch events.
+ *
+ * @author Grant Stone
+ * November 10, 2019
+ */
+
 public class PuzzleController implements View.OnTouchListener {
     private PuzzleView puzzle;
 
     public PuzzleController(PuzzleView v){
         puzzle = v;
-
     }
 
     @Override
@@ -26,10 +34,8 @@ public class PuzzleController implements View.OnTouchListener {
                     puzzle.squares[15].setCord(tempLeft, tempTop);
                     puzzle.invalidate();
                 }
-
             }
         }
-
         return true;
     }
 
