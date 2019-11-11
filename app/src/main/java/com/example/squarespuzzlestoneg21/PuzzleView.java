@@ -16,6 +16,7 @@ public class PuzzleView extends SurfaceView {
     Paint blackPaint = new Paint();
     Paint whitePaint = new Paint();
     Paint bluePaint = new Paint();
+    Paint somePaint = new Paint();
 
     Square squares[] = new Square[16];
 
@@ -37,14 +38,15 @@ public class PuzzleView extends SurfaceView {
         }
 
         getRandomPuzzle(squares);
+        //getWinPuzzle(squares);
 
 
 
     }
 
 
-    public void drawSquare(Canvas canvas, Square square){
-        canvas.drawRect(square.getLeft(), square.getTop(), square.getRight(), square.getBottom(), bluePaint);
+    public void drawSquare(Canvas canvas, Square square, Paint paint){
+        canvas.drawRect(square.getLeft(), square.getTop(), square.getRight(), square.getBottom(), paint);
         whitePaint.setTextSize(150);
         canvas.drawText(square.getNum(), square.getLeft()+5f, square.getTop()+146.875f, whitePaint);
 
@@ -71,14 +73,13 @@ public class PuzzleView extends SurfaceView {
         }
     }
 
-    public void drawWinPuzzle(Canvas canvas, Square[] squares) {
+    public void getWinPuzzle(Square[] squares) {
         int i = 0;
 
         for (float y = 205; y < 1000; y = y + 198.75f) {
             for (float x = 205; x < 1000; x = x + 198.75f) {
                 if(i < 15) {
                     squares[i].setCord(x, y);
-                    drawSquare(canvas, squares[i]);
                     i++;
                 }
             }
@@ -88,9 +89,24 @@ public class PuzzleView extends SurfaceView {
     }
 
     public void drawPuzzle(Canvas canvas, Square[] squares){
-        for(int i = 0; i < 15; i++){
-            drawSquare(canvas, squares[i]);
+        int i = 0;
+
+        for (float y = 205; y < 1000; y = y + 198.75f) {
+            for (float x = 205; x < 1000; x = x + 198.75f) {
+                if(squares[i].getLeft() == x && squares[i].getTop() == y) {
+                    somePaint.setColor(Color.GREEN);
+                }else {
+                    somePaint.setColor(Color.BLUE);
+                }
+                if(i < 15) {
+                    drawSquare(canvas, squares[i], somePaint);
+                }
+                i++;
+
+            }
         }
+
+
     }
 
 
